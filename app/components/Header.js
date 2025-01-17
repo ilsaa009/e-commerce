@@ -191,7 +191,9 @@ const Header = () => {
           <div className="mt-6">
             <div className="flex justify-between items-center">
               <span>Total:</span>
-              <span className="font-bold">${totalPrice}</span>
+              <span className="font-bold">
+                ${Math.round(cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0) * 100) / 100}
+              </span>
             </div>
             <button className="bg-blue-500 text-white py-2 px-4 rounded-md w-full mt-4">
               Go to Checkout
