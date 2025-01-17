@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import LogoImg from "../assests/common/logo.png";
 import { IoCartOutline, IoSearchOutline } from 'react-icons/io5';
@@ -55,14 +55,30 @@ const Header = () => {
     dispatch(decrementQuantity(id));
   };
 
+  useEffect(() => {
+    const storedCart = localStorage.getItem('cartItems');
+    const storedTotal = localStorage.getItem('cartTotalPrice');
+    if (storedCart) {
+      const parsedItems = JSON.parse(storedCart);
+      parsedItems.forEach(item => dispatch(addtoCart({ ...item, quantity: item.quantity })));
+    }
+    if (storedTotal) {
+    }
+  }, [dispatch]);
+  
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    localStorage.setItem('cartTotalPrice', totalPrice);
+  }, [cartItems, totalPrice]);
+
   return (
     <>
       <header className="header px-12 py-3 bg-white-100 relative z-20">
         <nav className="p-4 flex justify-between items-center relative">
-        <div className="flex items-center gap-14">
-        <div>
-      <Image src={LogoImg} alt="Logo" className="h-7" width={150} height={150} />
-          </div>
+          <div className="flex items-center gap-14">
+            <div>
+              <Image src={LogoImg} alt="Logo" className="h-7" width={150} height={150} />
+            </div>
             <ul className="flex space-x-8 text-gray-600">
               <li><a href="#" className="hover:text-blue-500">HOME</a></li>
               <li><a href="#" className="hover:text-blue-500">ABOUT</a></li>
@@ -76,7 +92,7 @@ const Header = () => {
               <IoSearchOutline size={23} onClick={toggleSearchBar} className="cursor-pointer" />
               <FaRegHeart size={23} />
               <div className="relative">
-                <IoCartOutline size={23} onClick={toggleCartDrawer} className="cursor-pointer"/>
+                <IoCartOutline size={23} onClick={toggleCartDrawer} className="cursor-pointer" />
                 <div className="absolute -top-2 -right-1.5 bg-primary-green w-[18px] h-[18px] rounded-full text-[12px] flex justify-center text-white">
                   {cartItems.length}
                 </div>
