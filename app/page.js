@@ -20,6 +20,10 @@ export default async function Home({ searchParams }) {
 
   return (
     <div className="flex flex-col gap-4 items-center">
+       <head>
+        <title>Home - Product Listings</title>
+        <meta name="description" content="Browse our collection of amazing products." />
+      </head>
         <h1 className="text-2xl font-semibold mb-4 text-black">Product</h1>
 
         <Suspense fallback={<ProductCardsSkeleton />}>

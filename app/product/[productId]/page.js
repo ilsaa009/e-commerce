@@ -5,7 +5,6 @@ import Reviews from "../../components/Reviews";
 import AddToCartButton from "../../components/AddToCartButton";
 import BackButton from "../../components/BackButton";
 
-// Skeleton loader component
 const SkeletonLoader = ({ type }) => {
   if (type === "image") {
     return <div className="bg-gray-300 h-80 mb-4 animate-pulse"></div>;
@@ -54,6 +53,10 @@ export default async function ProductDescription({ params }) {
 
   return (
     <div className="product-description-page px-6 py-4">
+        <head>
+        <title>{currentProduct.title}</title>
+        <meta name="description" content={currentProduct.description} />
+      </head>
       <BackButton/>
       <div className="flex gap-6">
         <div className="product-images w-1/3">
