@@ -53,10 +53,14 @@ export default async function ProductDescription({ params }) {
 
   return (
     <div className="product-description-page px-6 py-4">
-        <head>
-        <title>{currentProduct.title}</title>
-        <meta name="description" content={currentProduct.description} />
-      </head>
+      <head>
+  <title>{currentProduct.title}</title>
+  <meta name="description" content={currentProduct.description} />
+  <meta property="og:title" content={currentProduct.title} />
+  <meta property="og:description" content={currentProduct.description} />
+  <meta property="og:image" content={currentProduct.thumbnail} />
+  <meta property="og:image:alt" content={currentProduct.title} />
+</head>
       <BackButton/>
       <div className="flex gap-6">
         <div className="product-images w-1/3">
