@@ -20,20 +20,19 @@ export default async function Home({ searchParams }) {
 
   return (
     <div className="flex flex-col gap-4 items-center">
-      <h1 className="text-2xl font-semibold mb-4 text-black">Product</h1>
-      
-      <Suspense fallback={<ProductCardsSkeleton />}>
-        <ProductList products={products} />
-      </Suspense>
+        <h1 className="text-2xl font-semibold mb-4 text-black">Product</h1>
 
-      <PaginationControls
-        hasNextPage={page * perPage < totalEntries}
-        hasPrevPage={page > 1}
-        totalEntries={totalEntries}
-        currentPage={page}
-        perPage={perPage}
-      />
-    </div>
+        <Suspense fallback={<ProductCardsSkeleton />}>
+          <ProductList products={products} />
+        </Suspense>
+
+        <PaginationControls
+          hasNextPage={page * perPage < totalEntries}
+          hasPrevPage={page > 1}
+          totalEntries={totalEntries}
+          currentPage={page}
+          perPage={perPage} />
+      </div>
   );
 }
 
