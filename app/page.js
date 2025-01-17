@@ -29,13 +29,18 @@ export default async function Home({ searchParams }) {
         <Suspense fallback={<ProductCardsSkeleton />}>
           <ProductList products={products} />
         </Suspense>
-
+        <br />
+        <br />
+        <br />
         <PaginationControls
           hasNextPage={page * perPage < totalEntries}
           hasPrevPage={page > 1}
           totalEntries={totalEntries}
           currentPage={page}
           perPage={perPage} />
+          <br />
+        <br />
+        <br />
       </div>
   );
 }
