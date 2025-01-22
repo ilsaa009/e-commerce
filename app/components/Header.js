@@ -31,20 +31,6 @@ const Header = () => {
 
   const items = ['Makeup', 'Food', 'Fruits', 'Vegetables', 'Juice', 'Furniture'];
 
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-        console.log('User is logged in:', currentUser); 
-      } else {
-        setUser(null);
-        console.log('No user is logged in.'); 
-      }
-    });
-
-    return () => unsubscribe(); 
-  }, []);
 
   const toggleCartDrawer = () => setIsCartVisible((prev) => !prev);
 
