@@ -69,3 +69,10 @@ body {
   background-color: #ddd;
   cursor: not-allowed;
 }
+
+.inline-flex {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: nowrap; 
+}

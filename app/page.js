@@ -18,6 +18,7 @@ export default async function Home({ searchParams }) {
   const products = data.products;
   const totalEntries = data.total;
 
+
   return (
     <div className="flex flex-col gap-4 items-center">
        <head>
