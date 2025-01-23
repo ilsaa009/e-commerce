@@ -39,7 +39,11 @@ const Login = () => {
       toast.success("Logged in with Google!");
       router.push("/"); 
     } catch (err) {
+      if (err.code === "auth/unauthorized-domain") {
+        toast.error("Invalid domain");
+      }else {
       toast.error("Google Login error: " + err.message);
+      }
     }
   };
 
