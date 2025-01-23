@@ -1,21 +1,23 @@
+// Example authSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+const authSlice = createSlice({
+  name: 'auth',
+  initialState: {
     isLoggedIn: false, 
-  };
-  
-  const authSlice = createSlice({
-    name: 'auth',
-    initialState,
-    reducers: {
-      logIn(state) {
-        state.isLoggedIn = true;
-      },
-      logOut(state) {
-        state.isLoggedIn = false;
-      },
+    user: null, 
+  },
+  reducers: {
+    login(state, action) {
+      state.isLoggedIn = true;
+      state.user = action.payload; 
     },
-  });
+    logout(state) {
+      state.isLoggedIn = false;
+      state.user = null;
+    },
+  },
+});
 
 export const { login, logout } = authSlice.actions;
 export default authSlice.reducer;
